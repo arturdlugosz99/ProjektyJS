@@ -2,6 +2,12 @@
 
 const main = document.querySelector('main')
 
+// zmiana styli css elementu
+main.style.transform = "translateX(-10px)"
+
+// zmiana klasy css elementu
+main.classList.add() // .remove(), .toggle()
+
 // jednorazowe wykonanie kodu po określonym czasie
 const timeoutRef = setTimeout(
     () => {
