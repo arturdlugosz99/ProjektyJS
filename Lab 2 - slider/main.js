@@ -1,35 +1,70 @@
-// notatnik z zajęć
-
-const main = document.querySelector('main')
-
-// zmiana styli css elementu
-main.style.transform = "translateX(-10px)"
-
-// zmiana klasy css elementu
-main.classList.add() // .remove(), .toggle()
-
-// jednorazowe wykonanie kodu po określonym czasie
-const timeoutRef = setTimeout(
-    () => {
-        main.innerHTML = 'Msg from setTimeout'
-    },
-    2000
-)
-
-// wykonywanie kodu co określony czas
-let licznik = 0
-const intervalRef = setInterval(
-    () => {
-        main.innerHTML = `Msg from setInterval: ${licznik++}`
-    },
-    4000
-)
-
-// kasujemy setInterval
-// clearInterval(intervalRef)
-
-// kasujemy setTimeout
-// clearTimeout(intervalRef)
+const slideButtons = document.querySelectorAll('.slideNav');
+const sliderContainer = document.querySelector('#slider-wrapper');
+const slides = document.querySelectorAll('.slide');
+let currentSlideIndex = 0; 
+let slideWidth = 800; 
+let isPaused = false;
+let interval;
 
 
-// window.requestAnimationFrame
+function startSlider() {
+    interval = setInterval(() => {
+        if (!isPaused) {
+            nextSlide();
+        }
+    }, 3000);
+}
+
+startSlider();
+
+
+function goToSlide(index) {
+    const targetTranslateX = -slideWidth * index;
+    sliderContainer.style.transform = `translateX(${targetTranslateX}px)`;
+    currentSlideIndex = index;
+}
+
+function handleButtonClick(event) {
+    const targetIndex = parseInt(event.target.dataset.index); 
+    if (!isNaN(targetIndex)) {
+        if (targetIndex !== currentSlideIndex) {
+            clearInterval(interval); 
+            goToSlide(targetIndex);
+            startSlider(); 
+        }
+    } else if (event.target.id === "play") {
+        isPaused = false;
+    } else if (event.target.id === "pause") {
+        isPaused = true;
+    } else if (event.target.id === "prev") {
+        prevSlide();
+    } else if (event.target.id === "next") {
+        nextSlide();
+    }
+}
+
+
+function prevSlide() {
+    const newIndex = (currentSlideIndex - 1 + slides.length) % slides.length;
+    goToSlide(newIndex);
+}
+
+
+function nextSlide() {
+    const newIndex = (currentSlideIndex + 1) % slides.length;
+    goToSlide(newIndex);
+}
+
+slideButtons.forEach(button => {
+    button.addEventListener('click', handleButtonClick);
+});
+
+function setActiveSlide(index) {
+    slides.forEach(slide => slide.classList.remove('active'));
+    slideButtons.forEach(button => button.classList.remove('active'));
+    slides[index].classList.add('active');
+    slideButtons[index].classList.add('active');
+}
+
+goToSlide(currentSlideIndex);
+setActiveSlide(currentSlideIndex);
