@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notekeep</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="container">
+    <div id="note_container">
+
+    </div>
+
+    <div id="note_template" hidden>
+        <div class="note-header">
+            <p name="note-title"></p>
+            <div class="note-menu">
+                <img class="note-icon" src="images/pin.png" name="pin_note" alt="Przypnij">
+                <img class="note-icon" src="images/del.png" name="delete_note" alt="Usuń">
+            </div>
+        </div>
+        <div class="note-content">
+            <p name="note-content"></p>
+        </div>
+        <div class="note-footer">
+            <p name="note-date"></p>
+        </div>
+    </div>
+    <div id="note_creator">
+        <div class="creator-input">
+            <label for="note_title">Tytuł</label>
+            <input type="text" name="note_title" placeholder="Tytuł notatki">
+        </div>
+        <textarea name="note_content" placeholder="Treść notatki"></textarea>
+        <div class="flexbox">
+            <div class="creator-input">
+                <label for="note_color">Kolor</label>
+                <input type="color" name="note_color">
+            </div>
+            <input type="button" name="save_note" value="Dodaj">
+        </div>
+    </div>
+    <script src="main.js"></script>
+</body>
+
+</html>
