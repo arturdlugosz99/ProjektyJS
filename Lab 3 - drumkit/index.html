@@ -1,13 +1,68 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="drumkit.js" defer></script>
 </head>
+
 <body>
-    <audio src="./sounds/clap.wav" controls id="s1"></audio>
-    <audio src="./sounds/hihat.wav" controls id="s2"></audio>
-    <script src="drumkit.js"></script>
-</body> 
+    <audio src="./sounds/hihat.wav" id="hihat"></audio>
+    <audio src="./sounds/clap.wav" id="clap"></audio>
+    <audio src="./sounds/kick.wav" id="kick"></audio>
+    <audio src="./sounds/openhat.wav" id="openhat"></audio>
+    <audio src="./sounds/boom.wav" id="boom"></audio>
+    <audio src="./sounds/ride.wav" id="ride"></audio>
+    <audio src="./sounds/snare.wav" id="snare"></audio>
+    <audio src="./sounds/tom.wav" id="tom"></audio>
+    <audio src="./sounds/tink.wav" id="tink"></audio>
+
+    <div id="main">
+        <div id="buttons">
+            <div id="q">
+                <a class="key">Q: Boom</a>
+            </div>
+            <div id="w">
+                <a class="key">W: Tom</a>
+            </div>
+            <div id="e">
+                <a class="key">E: Hihat</a>
+            </div>
+            <div id="a">
+                <a class="key">A: Kick</a>
+            </div>
+            <div id="s">
+                <a class="key">S: Openhat</a>
+            </div>
+            <div id="d">
+                <a class="key">D: Ride</a>
+            </div>
+            <div id="z">
+                <a class="key">Z: Snare</a>
+            </div>
+            <div id="x">
+                <a class="key">X: Clap</a>
+            </div>
+            <div id="c">
+                <a class="key">C: Tink</a>
+            </div>
+        </div>
+
+        <p></p>
+        <div class="buttonrec" id="buttonr">
+            <button id="record">Nagrywaj</button>
+            <div class="layer"></div>
+        </div>
+        <p></p>
+        <div class="recorded">
+            Tutaj są Twoje nagrania. Kliknij, aby odtworzyć:
+            <ul class="records"></ul>
+        </div>
+    </div>
+</body>
+
 </html>

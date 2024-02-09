@@ -1,0 +1,78 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #e6e6e6; 
+    margin: 20px;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+#main {
+    text-align: center;
+}
+
+#buttons {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    justify-content: center;
+}
+
+.key {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 100px;
+    background-color: #ffcc00;
+    color: #333;
+    text-decoration: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.key:hover {
+    background-color: #ffa500;
+}
+
+.buttonrec {
+    margin-top: 20px;
+}
+
+#record {
+    padding: 10px;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#record:hover {
+    background-color: #45a049;
+}
+
+.recording {
+    background-color: #e74c3c;
+}
+
+.recorded {
+    margin-top: 20px;
+    font-size: 18px;
+}
+
+.records {
+    list-style-type: none;
+    padding: 0;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.records:hover {
+    background-color: #ecf0f1;
+}
