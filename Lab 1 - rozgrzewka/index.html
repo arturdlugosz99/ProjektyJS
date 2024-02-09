@@ -1,16 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Lab 1</title>
-  </head>
-  <input type="text" id="liczba1" />
-  <button id="przelicz">Przelicz</button>
-  <div id="wyniki"></div>
-  <script src="main.js" type="text/javascript"></script>
-  <script type="text/javascript">
-    // console.log('test')
-  </script>
-  <body></body>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator</title>
+</head>
+<body>
+    <div>
+        <label for="value1">Wartość 1:</label>
+        <input type="number" id="value1" class="value">
+        <label for="value2">Wartość 2:</label>
+        <input type="number" id="value2" class="value">
+        <label for="value3">Wartość 3:</label>
+        <input type="number" id="value3" class="value">
+        <label for="value4">Wartość 4:</label>
+        <input type="number" id="value4" class="value">
+        <button id="calculate">Oblicz</button>
+    </div>
+
+    <div>
+        <p id="sum">Suma: 0</p>
+        <p id="avg">Średnia: 0</p>
+        <p id="min">Min: 0</p>
+        <p id="max">Max: 0</p>
+    </div>
+
+    <div id="fields">
+    </div>
+
+    <button id="add">Dodaj pole</button>
+    <div id="result2">Suma: 0, Średnia: 0, Min: 0, Max: 0</div>
+
+    <script src="script.js"></script>
+</body>
 </html>
