@@ -9,22 +9,26 @@ const maxCalc = document.querySelector('#max');
 
 btnCalculate.addEventListener('click', () => {
     let sum = 0;
-    let min = Infinity;
-    let max = -Infinity;
+    let min = null;
+    let max = null;
+    let count = 0;
 
     values.forEach(value => {
-        const num = parseInt(value.value);
-        sum += num;
-        min = Math.min(min, num);
-        max = Math.max(max, num);
+        const num = parseFloat(value.value); // Zmienione na parseFloat
+        if (!isNaN(num)) {
+            sum += num;
+            min = min === null ? num : Math.min(min, num);
+            max = max === null ? num : Math.max(max, num);
+            count++;
+        }
     });
 
-    const avg = sum / values.length;
+    const avg = sum / count; // Dzielenie przez liczbę wprowadzonych wartości
 
     sumCalc.textContent = `Suma: ${sum}`;
-    avgCalc.textContent = `Średnia: ${avg}`;
-    minCalc.textContent = `Min: ${min}`;
-    maxCalc.textContent = `Max: ${max}`;
+    avgCalc.textContent = `Średnia: ${count > 0 ? avg : 0}`; // Obsługa przypadku braku wartości
+    minCalc.textContent = `Min: ${min !== null ? min : 'Brak danych'}`;
+    maxCalc.textContent = `Max: ${max !== null ? max : 'Brak danych'}`;
 });
 
 // Sekcja 2: Dynamiczne dodawanie pól input do wprowadzania liczb
@@ -35,15 +39,10 @@ addBtn.addEventListener('click', () => {
     const div = document.createElement("div");
     const input = document.createElement('input');
     input.type = "number";
-    input.value = 0;
     input.className = "value";
 
-    input.addEventListener('input', () => {
-        Calculate();
-    });
-
     const removeBtn = document.createElement('button');
-    removeBtn.innerHTML = "Usuń";
+    removeBtn.textContent = "Usuń";
     removeBtn.addEventListener('click', (ev) => {
         ev.currentTarget.parentNode.remove();
         Calculate();
@@ -59,17 +58,21 @@ addBtn.addEventListener('click', () => {
 function Calculate(){
     const nums = document.querySelectorAll('.value');
     let sum = 0;
-    let min = Infinity;
-    let max = -Infinity;
+    let min = null;
+    let max = null;
+    let count = 0;
 
     nums.forEach(num => {
-        const value = parseInt(num.value);
-        sum += value;
-        min = Math.min(min, value);
-        max = Math.max(max, value);
+        const value = parseFloat(num.value); // Zmienione na parseFloat
+        if (!isNaN(value)) {
+            sum += value;
+            min = min === null ? value : Math.min(min, value);
+            max = max === null ? value : Math.max(max, value);
+            count++;
+        }
     });
 
-    const avg = sum / nums.length;
+    const avg = sum / count; // Dzielenie przez liczbę wprowadzonych wartości
 
-    result2.textContent = `Suma: ${sum}, Średnia: ${avg}, Min: ${min}, Max: ${max}`;
+    result2.textContent = `Suma: ${sum}, Średnia: ${count > 0 ? avg : 0}, Min: ${min !== null ? min : 'Brak danych'}, Max: ${max !== null ? max : 'Brak danych'}`;
 }
